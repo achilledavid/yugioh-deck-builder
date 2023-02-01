@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../script.js"></script>
+        <link rel="stylesheet" href="../reset.css">
+        <link rel="stylesheet" href="../style.css">
+        <title>Yu gi oh</title>
+    </head>
+
+    <body onload="getDecks(); getArchetypes()">
+        <header>
+            <div class="burger" onclick="menu()"></div>
+            <menu>
+                <a href="../">
+                    <p>ACCUEIL</p>
+                </a>
+                <a href="./">
+                    <p>CARTES</p>
+                </a>
+                <a href="../decks/">
+                    <p>DECKS</p>
+                </a>
+            </menu>
+        </header>
+        <div class="container">
+            <div class="sidebar">
+                <div class="sidebar__filter">
+                    <h1>Nom</h1>
+                    <input autocomplete="off" id="fname" onchange="addFilter(this)" type="text" placeholder="Nom">
+                </div>
+                <div class="sidebar__filter">
+                    <h1>Type</h1>
+                    <input autocomplete="off" id="race" onchange="addFilter(this)" type="text" placeholder="Type">
+                </div>
+                <div class="sidebar__filter">
+                    <h1>Archetype</h1>
+                    <select id="archetype" onchange="addFilter(this)">
+                        <option value="default" disabled selected>Archetype</option>
+                    </select>
+                </div>
+                <div class="sidebar__filter">
+                    <h1>Type de carte</h1>
+                    <select id="type" onchange="addFilter(this)">
+                        <option value="default" disabled selected>Type de carte</option>
+                        <option value="Normal Monster">Monstre</option>
+                        <option value="Effect Monster">Monstre à effet</option>
+                        <option value="Flip Effect Monster">Flip</option>
+                        <option value="Ritual Monster">Monstre rituel</option>
+                        <option value="Ritual Effect Monster">Monstre rituel à effet</option>
+                        <option value="Union Effect Monster">Monstre union à effet</option>
+                        <option value="Spirit Monster">Monstre esprit</option>
+                        <option value="Toon Monster">Monstre toon</option>
+                        <option value="" disabled></option>
+                        <option value="Spell Card">Magie</option>
+                        <option value="Trap Card">Piège</option>
+                        <option value="" disabled></option>
+                        <option value="xyz Monster">Xyz</option>
+                        <option value="Link Monster">Lien</option>
+                        <option value="Fusion Monster">Fusion</option>
+                        <option value="" disabled></option>
+                        <option value="Synchro Monster">Synchro</option>
+                        <option value="Synchro Monster">Synchro/Monstre</option>
+                        <option value="Tuner Monster">Synthoniseur</option>
+                        <option value="Synchro Tuner Monster">Synthoniseur/Synchro</option>
+                        <option value="Flip Tuner Effect Monster">Synthoniseur/Flip</option>
+                        <option value="" disabled></option>
+                        <option value="Skill Card">Compétences</option>
+                        <option value="Token">Jeton</option>
+                        <option value="" disabled></option>
+                        <option value="Pendulum Effect Ritual Monster">Pendule/Monstre</option>
+                        <option value="Pendulum Effect Monster">Pendule/Monstre à effet</option>
+                        <option value="Pendulum Effect Ritual Monster">Pendule/Monstre rituel à effet</option>
+                        <option value="Synchro Pendulum Effect Monster">Pendule/Monstre à effet/Synthoniseur</option>
+                        <option value="Pendulum Effect Ritual Monster">Pendule/Flip</option>
+                        <option value="Pendulum Effect Fusion Monster">Pendule/Fusion</option>
+                        <option value="Synchro Pendulum Effect Monster">Pendule/Synchro</option>
+                        <option value="XYZ Pendulum Effect Monster">Pendule/Xyz</option>
+                    </select>
+                </div>
+                <div class="sidebar__filter">
+                    <h1>Attribut</h1>
+                    <select id="attribute" onchange="addFilter(this)">
+                        <option value="default" disabled selected>Attribut</option>
+                        <option value="divine">DIVINE</option>
+                        <option value="dark">DARK</option>
+                        <option value="earth">EARTH</option>
+                        <option value="fire">FIRE</option>
+                        <option value="light">LIGHT</option>
+                        <option value="water">WATER</option>
+                        <option value="wind">WIND</option>
+                    </select>
+                </div>
+                <div class="sidebar__filter">
+                    <h1>Niveau</h1>
+                    <input autocomplete="off" id="level" onchange="addFilter(this)" type="number" placeholder="Niveau"
+                        min="0">
+                </div>
+                <button class="clear" onclick="clearFilters()">Clear</button>
+                <button class="search" onclick="getFilteredCards()">Rechercher</button>
+            </div>
+            <div class="content">
+                <div class="content__cards">
+                    <p class="error">Veuillez faire une recherche.</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal">
+            <button class="close" onclick="showModal()">Close</button>
+            <div onload="getDecks()" class="ajout__deck">
+                <select name="" id="deck-select" onchange="getSelectedDeck()">
+                    <option value="default" disabled selected>Choisir un deck</option>
+                </select>
+                <button onclick="addCardToDeck()">Ajouter</button>
+            </div>
+            <div class="modal__left">
+                <img class="modal__img" src="" alt="">
+                <div class="modal__prices"></div>
+            </div>
+            <div class="modal__right">
+                <h1 class="modal__title"></h1>
+                <p class="modal__desc"></p>
+            </div>
+        </div>
+    </body>
+
+</html>
